@@ -18,9 +18,25 @@ h1 {
 
 .calculator {
     width: 400px;
+    height: 800px;
 }
 
 .button-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.btn {
+    padding: 20px;
+}
+
+.screen {
+    font-size: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.clearbtn {
+    margin: 10px;
 }

@@ -1,3 +1,18 @@
+
+const numberButtons = document.querySelectorAll('[data-number]');
+const operatorButtons = document.querySelectorAll('[data-operator]');
+const currentScreen = document.getElementById('currentScreen')
+
+numberButtons.forEach ((button) =>
+    button.addEventListener('click', () => appendNumber(button.textContent))
+);
+
+function appendNumber(number) {
+    currentScreen.textContent += number;
+};
+
+
+
 const add = function(a, b) {
     return a+b;
 };
