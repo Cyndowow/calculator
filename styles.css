@@ -37,6 +37,16 @@ h1 {
     border-radius: 5px;
 }
 
-.clearbtn {
+#clearBtn {
     margin: 10px;
+}
+
+#currentScreen {
+    min-height: 64px;
+    font-size: 40px;
+}
+
+#storedInput {
+    min-height: 32px;
+    font-size: 20px;
 }

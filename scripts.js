@@ -1,14 +1,47 @@
+let firstOperand = '';
+let secondOperand = '';
+let currentOperator = null;
+
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
 const currentScreen = document.getElementById('currentScreen');
+const storedInput = document.getElementById('storedInput');
 const decimalButton = document.getElementById('dot');
 const clearButton = document.getElementById('clearBtn');
 const equalButton = document.getElementById('equal');
 
+clearButton.addEventListener('click', clear);
+equalButton.addEventListener('click', calculate);
+
 numberButtons.forEach ((button) =>
     button.addEventListener('click', () => appendNumber(button.textContent))
 );
+
+operatorButtons.forEach ((button) =>
+    button.addEventListener('click', () => setOperator(button.textContent))
+);
+
+
+
+function calculate() {
+    secondOperand = currentScreen.textContent;
+    storedInput.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
+    currentScreen.textContent = operate(currentOperator, firstOperand, secondOperand);
+    currentOperator = null;
+}
+
+function resetScreen() {
+    currentScreen.textContent = '';
+};
+
+function clear() {
+    currentScreen.textContent = '0';
+    storedInput.textContent = '';
+    firstOperand = '';
+    secondOperand = '';
+    currentOperator = null;
+};
 
 function appendNumber(number) {
     if (currentScreen.textContent === '0') {
@@ -17,34 +50,48 @@ function appendNumber(number) {
     currentScreen.textContent += number;
 };
 
-function resetScreen() {
-    currentScreen.textContent = '';
+function setOperator(operator) {
+    if (currentOperator !== null) {
+        calculate();
+    } else {
+        firstOperand = currentScreen.textContent;
+        currentOperator = operator;
+        storedInput.textContent = `${firstOperand} ${currentOperator}`;
+        resetScreen();
+    }
 }
 
-const add = function(a, b) {
-    return a+b;
+
+function add(a, b) {
+    return a + b;
 };
 
-const subtract = function (a, b) {
-    return a-b;
+function subtract(a, b) {
+    return a - b;
 };
 
-const multiply = function(a, b) {
-    return a*b;
+function multiply(a, b) {
+    return a * b;
 };
 
-const divide = function(a, b) {
-    return a/b;
+function divide(a, b) {
+    return a / b;
 };
 
-const operate = function(operator, a, b) {
-    if (operator == "+") {
-        return add(a, b);
-    } else if (operator == "-") {
-        return subtract(a, b);
-    } else if (operator == "*") {
-        return multiply(a, b);
-    } else {
-        return divide(a, b);
+function operate(operator, a, b) {
+    a = Number(a);
+    b = Number(b);
+    switch (operator) {
+        case '+':
+          return add(a, b)
+        case '-':
+          return subtract(a, b)
+        case '*':
+          return multiply(a, b)
+        case '/':
+          if (b === 0) return null
+          else return divide(a, b)
+        default:
+          return null
     }
 }
