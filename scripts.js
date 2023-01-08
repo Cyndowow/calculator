@@ -27,7 +27,9 @@ operatorButtons.forEach ((button) =>
 function calculate() {
     secondOperand = currentScreen.textContent;
     storedInput.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
-    currentScreen.textContent = operate(currentOperator, firstOperand, secondOperand);
+    currentScreen.textContent = roundResult(
+        operate(currentOperator, firstOperand, secondOperand)
+    );
     currentOperator = null;
 }
 
@@ -42,6 +44,10 @@ function clear() {
     secondOperand = '';
     currentOperator = null;
 };
+
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
+}
 
 function appendNumber(number) {
     if (currentScreen.textContent === '0') {
@@ -81,6 +87,14 @@ function divide(a, b) {
 function operate(operator, a, b) {
     a = Number(a);
     b = Number(b);
+    if (operator === '/' && a == '0') {
+        alert('Halt stop!');
+        return;
+    } else if (operator === '/' && b == '0') {
+        alert('Halt stop!');
+        return;
+    }
+
     switch (operator) {
         case '+':
           return add(a, b)
