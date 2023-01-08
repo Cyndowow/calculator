@@ -1,7 +1,10 @@
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
-const currentScreen = document.getElementById('currentScreen')
+const currentScreen = document.getElementById('currentScreen');
+const decimalButton = document.getElementById('dot');
+const clearButton = document.getElementById('clearBtn');
+const equalButton = document.getElementById('equal');
 
 numberButtons.forEach ((button) =>
     button.addEventListener('click', () => appendNumber(button.textContent))
