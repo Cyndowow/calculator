@@ -19,3 +19,8 @@ h1 {
 .calculator {
     width: 400px;
 }
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
