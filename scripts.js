@@ -8,10 +8,15 @@ numberButtons.forEach ((button) =>
 );
 
 function appendNumber(number) {
+    if (currentScreen.textContent === '0') {
+        resetScreen()
+    };
     currentScreen.textContent += number;
 };
 
-
+function resetScreen() {
+    currentScreen.textContent = '';
+}
 
 const add = function(a, b) {
     return a+b;
