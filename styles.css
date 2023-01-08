@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    width: 400px;
+}
