@@ -89,10 +89,10 @@ function operate(operator, a, b) {
     b = Number(b);
     if (operator === '/' && a == '0') {
         alert('Halt stop!');
-        return;
+        clear();
     } else if (operator === '/' && b == '0') {
         alert('Halt stop!');
-        return;
+        clear();
     }
 
     switch (operator) {
